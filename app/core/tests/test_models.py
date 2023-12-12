@@ -31,20 +31,21 @@ class ModelTests(TestCase):
         ]
 
         for email, expected in sample_emails:
-            user = get_user_model().objects.create_user(email, 'passwordSample123')
+            user = get_user_model().objects.create_user(
+                email, "passwordSample123"
+              )
             self.assertEqual(user.email, expected)
 
     def test_new_user_without_email_raises_error(self):
         """Test that creating a user without email raises a value error."""
         with self.assertRaises(ValueError):
-            get_user_model().objects.create_user('', 'password123')
+            get_user_model().objects.create_user("", "password123")
 
     def test_create_superuser(self):
         """Test creating a super user"""
         user = get_user_model().objects.create_superuser(
-            'test@example.com',
-            'test123'
-        )
-
-        self.assertTrue(user.is_superuser) # field provided by the permissions mixin
+            "test@example.com", "test123"
+          )
+        # field provided by the permissions mixin
+        self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
