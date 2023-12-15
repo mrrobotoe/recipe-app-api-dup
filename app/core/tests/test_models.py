@@ -42,7 +42,7 @@ class ModelTests(TestCase):
         for email, expected in sample_emails:
             user = get_user_model().objects.create_user(
                 email, "passwordSample123"
-              )
+            )
             self.assertEqual(user.email, expected)
 
     def test_new_user_without_email_raises_error(self):
@@ -54,7 +54,7 @@ class ModelTests(TestCase):
         """Test creating a super user"""
         user = get_user_model().objects.create_superuser(
             "test@example.com", "test123"
-            )
+        )
         # field provided by the permissions mixin
         self.assertTrue(user.is_superuser)
         self.assertTrue(user.is_staff)
@@ -87,7 +87,7 @@ class ModelTests(TestCase):
         """Test creating an ingredient is successful."""
         user = create_user()
         ingredient = models.Ingredient.objects.create(
-            user=user, name='Ingredient1'
-            )
+            user=user, name="Ingredient1"
+        )
 
         self.assertEqual(str(ingredient), ingredient.name)
