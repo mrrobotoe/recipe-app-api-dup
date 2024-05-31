@@ -24,6 +24,7 @@ from django.urls import path, include
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/user/", include("user.urls")),
+    path("api/recipe/", include("recipe.urls")),
     path("api/schema", SpectacularAPIView.as_view(), name="api-schema"),
     path(
         "api/docs/",
